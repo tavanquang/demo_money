@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Login</title>
+</head>
+<body>
+
+	<h2 style="color: red;" th:if="${e} == 'error'">Tài khoản hoặc
+			mật khẩu không hợp lê !</h2>
+		<h2 style="color: red;" th:if="${e} == 'deny'">Tài khoản của bạn
+			không được phép truy cập !</h2>
+
+	<form th:action="/login" method="post">
+		<input type="text" name="username"/> <br/>
+		
+		<input type="password" name="password"/> <br/>
+		
+		<input type="submit" value="Login"/> <br/>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Chi tiết phiếu đề xuất</title>
+</head>
+<body>
+
+<h2 style="text-align: center;"> ĐỀ XUẤT XÉT DUYỆT</h2>  
+<p style="text-align: center;"> Ngày: <i th:text="${PhieuDeXuatDTO.ngayDeXuat}"></i></p>
+<div id="1">
+		<p>Kính gửi       : NCCSOFT VIETNAM</p>
+		<p>Người đề nghị  :<i th:text="${PhieuDeXuatDTO.nguoiDeNghi}"></i></p>
+		<p> Thời gian thực hiện:
+		 <span>-Ngày bắt đầu thực hiện:<i th:text="${PhieuDeXuatDTO.ngayBatDau}"></i>
+		 </span>  -Ngày hoàn thành công việc:<i th:text="${PhieuDeXuatDTO.ngayHoanThanh}"></i></p>
+		
+</div>
+	<p><b>Nội dung đề xuất:</b></p>
+	<div id="bang">
+		<table width="1064" height="307" border="1">
+			<tr>
+			  <td width="150">TT</td>
+			  <td width="470">noi dung de xuat</td>
+			  <td width="68">Số Ngày:
+					</td>
+			  <td width="55">Số lượng:
+					</td>
+			  <td width="100">Đơn giá:
+					</td>
+			  <td width="133">Thành tiền:
+				</td>
+			  <td width="145">Ghi chú:
+					</td>
+			</tr>
+			<tr th:each="list,c : ${PhieuDeXuatDTO.noiDungDeXuats}">
+			  <td th:text="${c.count}"></td>
+			  <td th:text="${list.noiDungDeXuat}"></td>
+			  <td th:text="${list.soNgay}"></td>
+			  <td th:text="${list.soLuong}"></td>
+			  <td th:text="${list.donGia}"></td>
+			  <td th:text="${list.tien}"></td>
+			  <td th:text="${list.ghiChu}"></td>
+			  
+			</tr>
+			<tr>
+			  <td height="36">&nbsp;</td>
+			  <td colspan="4">Cộng</td>
+			  <td><i th:text="${PhieuDeXuatDTO.tongSoTien}"></i></td>
+			  <td>&nbsp;</td>
+			</tr>
+			<!-- <tr>
+			  <td height="43">&nbsp;</td>
+			  <td colspan="4">Đề xuất ngày mai</td>
+			  <td>&nbsp;</td>
+			  <td>&nbsp;</td>
+			</tr> -->
+		</table>
+			<p>Ý kiến lãnh đạo: <i th:text="${PhieuDeXuatDTO.yKienLanhDao}"></i></p>
+				<table width="1064" height="81" border="1">
+				  <tr>
+				    <td>&nbsp;Người đề nghị </td>
+				    <td>&nbsp;Kế toán</td>
+				    <td>&nbsp;Gíam đốc</td>
+				  </tr>
+				  <tr>
+				    <td>&nbsp;<i th:text="${PhieuDeXuatDTO.nguoiDeNghi}"></i></td>
+				    <td>&nbsp;Nguyễn Thị Phương Anh</td>
+				    <td>&nbsp;Mai Thế Hùng</td>
+				  </tr>
+				</table>
+
+</div>
+
+
+
+</body>
+</html>

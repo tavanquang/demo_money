@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Danh sách phiếu đề xuất</title>
+</head>
+<body>
+	<h2>Danh sách phiếu đề xuất</h2>
+	<h3 style="color:red;" th:if="${msg} == 1"> Thêm thành công</h3>
+	<form th:action="@{/chon-danh-sach-phieu-chi}" method="get">
+		<select name="luaChon">
+			<option value="4">Tất cả </option>
+			<option value="0">Đang xét duyệt </option>
+			<option value="1">Đã duyệt </option>
+			<option value="2">Đã chi </option>
+		</select>
+		<input type="submit" value="Submit"/>
+	</form>
+
+	<table border="1">
+		<tr>
+			<td>Người đề nghị</td>
+			<td>Ngày bắt đầu</td>
+			<td>Ngày hoàn thành</td>
+			<td>Tổng tiền</td>
+			<td>Trạng thái</td>
+			<td>Tùy chọn</td>
+			
+		</tr>
+		<tr th:each="list : ${listPDX}">
+			<td th:text="${list.nguoiDeNghi}"></td>
+			<td th:text="${list.ngayBatDau}"></td>
+			<td th:text="${list.ngayHoanThanh}"></td>
+			<td th:text="${list.tongSoTien}"></td>
+			<td th:if="${list.trangThai} == 0">Đang xét duyệt</td>
+			<td th:if="${list.trangThai} == 1">Đã duyệt</td>
+			<td th:if="${list.trangThai} == 2">Đã chi</td>
+			<td>
+				<a th:href="@{/chi-tiet-phieu-de-xuat(id=${list.id})}" >Xem chi tiết</a>
+			</td>
+		</tr>
+	</table>
+
+</body>
+</html>

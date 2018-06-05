@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Chi tiết phiếu chi</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/chiTietPhieuChi.css}" />
+</head>
+<body>
+	<div>
+		<h1>PHIẾU CHI</h1>
+		<p style="text-align: center;">
+			<i>Ngày tháng:<b th:text="${phieuChiDTO.ngayLapPhieu}"></b></i>
+		</p>
+
+	</div>
+	<div align="right">
+
+		<p>Quyển số</p>
+		<p>Số:PC...</p>
+		<p>Nợ:642</p>
+		<p>Có:11</p>
+	</div>
+	<p>
+		Người nhận tiền: <i th:text="${phieuChiDTO.nguoiNhanTien}"></i>
+	</p>
+	<p>Địa chỉ: Công ty TNHH Công Nghệ NCCSOFT Việt Nam</p>
+	<p>Lí do chi:<i th:text="${phieuChiDTO.lyDoChi}"></i></p>
+	<p>
+		Số tiền : <i th:text="${phieuChiDTO.tongtien}"></i>
+	</p>
+	
+	<p>Kèm theo : <i th:text="${phieuChiDTO.kemTheo}"></i></p>
+	
+	<p style="text-align: right;">Ngày <i th:text="${phieuChiDTO.ngayLapPhieu}"></i></p>
+	<div id="kiten" style="text-align: center;">
+		<div style="float:left;">
+		<b>Người nhận tiền</b> <br/>
+		<b th:text="${phieuChiDTO.nguoiNhanTien}"></b>
+		</div>
+		
+		<div style="float:left;">
+		<b>Người lập phiếu</b> <br/>
+		<b th:text="${phieuChiDTO.nguoiLapPhieu}"></b>
+		</div>
+		
+		<div style="float:left;">
+		<b>Giám đốc</b><br/>
+		<b th:text="${phieuChiDTO.giamDoc}"></b>
+		</div>
+			
+	</div>
+
+</body>
+</html>

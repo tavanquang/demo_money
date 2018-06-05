@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Thêm phiếu chi</title>
+</head>
+<body>
+
+	<h2>Thêm phiếu chi</h2>
+	
+	<form th:action="@{/them-phieu-chi}" method="post" th:object="${phieuChiDTO}">
+		Người nhận tiền: <input type="text" th:field="*{nguoiNhanTien}" /> <br/><br/>
+		
+		Lý do chi: <input type="text" th:field="*{lyDoChi}" /> <br/><br/>
+		
+		Số tiền chi: <input type="text" th:field="*{soTien}" /> <br/><br/>
+		
+		Số giấy tờ kèm theo: <input type="text" th:field="*{kemTheo}" /> <br/><br/>
+	
+		Người lập phiếu: <input type="text" th:field="*{nguoiLapPhieu}" /> <br/><br/>
+	
+		Giám đốc: <input type="text" th:field="*{giamDoc}" /> <br/><br/>
+	
+		<input type="submit"  value="Thêm phiếu chi"/>
+	
+	</form>
+
+</body>
+</html>
