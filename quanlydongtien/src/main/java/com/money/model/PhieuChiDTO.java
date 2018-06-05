@@ -23,6 +23,16 @@ public class PhieuChiDTO {
 	private String nguoiNhanTien;
 
 	private double soTien;
+	
+	private String tongtien;
+
+	public String getTongtien() {
+		return tongtien;
+	}
+
+	public void setTongtien(String tongtien) {
+		this.tongtien = tongtien;
+	}
 
 	private int trangThai;
 

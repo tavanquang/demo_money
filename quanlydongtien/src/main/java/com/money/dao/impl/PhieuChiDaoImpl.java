@@ -48,4 +48,11 @@ public class PhieuChiDaoImpl implements PhieuChiDao{
 		return entityManager.find(PhieuChi.class, id);
 	}
 
+	@Override
+	public List<PhieuChi> getAllByTrangThai(int trangThai) {
+		String jql = "SELECT p FROM PhieuChi p where p.trangThai = ?";
+		return entityManager.createQuery(jql, PhieuChi.class).setParameter(1, trangThai).getResultList();
+	
+	}
+
 }

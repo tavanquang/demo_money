@@ -1,7 +1,9 @@
 package com.money.service.impl;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,8 @@ public class PhieuDeXuatServiceImpl implements PhieuDeXuatService{
 		// TODO Auto-generated method stub
 		List<PhieuDeXuatDTO> phieuDeXuatDTOs = new ArrayList<PhieuDeXuatDTO>();
 		List<PhieuDeXuat> phieuDeXuats = phieuDeXuatDao.getAll();
+		Locale locale = new Locale("vi","VN");
+		NumberFormat format = NumberFormat.getCurrencyInstance(locale); 
 		
 		for(PhieuDeXuat phieuDeXuat : phieuDeXuats){
 		
@@ -47,6 +51,9 @@ public class PhieuDeXuatServiceImpl implements PhieuDeXuatService{
 			
 			phieuDeXuatDTO.setNguoiKeToan(phieuDeXuat.getNguoiKeToan());
 			phieuDeXuatDTO.setTongTien(phieuDeXuat.getTongTien());
+			
+			phieuDeXuatDTO.setTongSoTien(format.format(phieuDeXuat.getTongTien()));
+			
 			phieuDeXuatDTO.setyKienLanhDao(phieuDeXuat.getYKienLanhDao());
 			phieuDeXuatDTO.setTrangThai(phieuDeXuat.getTrangThai());
 			
@@ -104,6 +111,8 @@ public class PhieuDeXuatServiceImpl implements PhieuDeXuatService{
 	public PhieuDeXuatDTO getPhieuDeXuatDTO(String id) {
 		// TODO Auto-generated method stub
 		PhieuDeXuat phieuDeXuat = phieuDeXuatDao.getPhieuDeXuat(id);
+		Locale locale = new Locale("vi","VN");
+		NumberFormat format = NumberFormat.getCurrencyInstance(locale); 
 		
 		PhieuDeXuatDTO phieuDeXuatDTO = new PhieuDeXuatDTO();
 		
@@ -119,6 +128,7 @@ public class PhieuDeXuatServiceImpl implements PhieuDeXuatService{
 		
 		phieuDeXuatDTO.setNguoiKeToan(phieuDeXuat.getNguoiKeToan());
 		phieuDeXuatDTO.setTongTien(phieuDeXuat.getTongTien());
+		phieuDeXuatDTO.setTongSoTien(format.format(phieuDeXuat.getTongTien()));
 		phieuDeXuatDTO.setyKienLanhDao(phieuDeXuat.getYKienLanhDao());
 		phieuDeXuatDTO.setTrangThai(phieuDeXuat.getTrangThai());
 		
@@ -136,6 +146,7 @@ public class PhieuDeXuatServiceImpl implements PhieuDeXuatService{
 			noiDungDeXuatDTO.setSoLuong(noiDungDeXuat.getSoLuong());
 			noiDungDeXuatDTO.setSoNgay(noiDungDeXuat.getSoNgay());
 			noiDungDeXuatDTO.setThanhTien(noiDungDeXuat.getThanhTien());
+			noiDungDeXuatDTO.setTien(format.format(noiDungDeXuat.getThanhTien()));
 			noiDungDeXuatDTO.setIdPhieuDeXuat(noiDungDeXuat.getTblPhieuDeXuat().getId());
 		
 			noiDungDeXuatDTOs.add(noiDungDeXuatDTO);

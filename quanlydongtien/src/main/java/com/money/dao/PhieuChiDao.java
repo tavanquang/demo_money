@@ -15,5 +15,7 @@ public interface PhieuChiDao {
 	public void RemovePhieuChi(PhieuChi phieuChi);
 	
 	public PhieuChi getPhieuChi(int id);
+
+	public List<PhieuChi> getAllByTrangThai(int trangThai);
 	
 }

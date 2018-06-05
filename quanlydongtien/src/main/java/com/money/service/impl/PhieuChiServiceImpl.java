@@ -1,7 +1,10 @@
 package com.money.service.impl;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +26,9 @@ public class PhieuChiServiceImpl implements PhieuChiService{
 	@Override
 	public List<PhieuChiDTO> getAll() {
 
+		Locale locale = new Locale("vi","VN");
+		NumberFormat format = NumberFormat.getCurrencyInstance(locale); 
+		
 		List<PhieuChiDTO> phieuChiDTOs = new ArrayList<PhieuChiDTO>();
 		List<PhieuChi> phieuChis = phieuChiDao.getAll();
 		for(PhieuChi phieuChi : phieuChis){
@@ -39,6 +45,9 @@ public class PhieuChiServiceImpl implements PhieuChiService{
 			phieuChiDTO.setNguoiLapPhieu(phieuChi.getNguoiLapPhieu());
 			phieuChiDTO.setNguoiNhanTien(phieuChi.getNguoiNhanTien());
 			phieuChiDTO.setSoTien(phieuChi.getSoTien());
+			
+			phieuChiDTO.setTongtien(format.format(phieuChi.getSoTien()));
+			
 			phieuChiDTO.setTrangThai(phieuChi.getTrangThai());
 			
 			phieuChiDTOs.add(phieuChiDTO);
@@ -57,7 +66,7 @@ public class PhieuChiServiceImpl implements PhieuChiService{
 		phieuChi.setKemTheo(phieuChiDTO.getKemTheo());
 		phieuChi.setGiamDoc(phieuChiDTO.getGiamDoc());
 		phieuChi.setLyDoChi(phieuChiDTO.getLyDoChi());
-		phieuChi.setNgayLapPhieu(phieuChiDTO.getNgayLapPhieu());
+		phieuChi.setNgayLapPhieu(new Date());
 		
 		phieuChi.setNguoiLapPhieu(phieuChiDTO.getNguoiLapPhieu());
 		phieuChi.setNguoiNhanTien(phieuChiDTO.getNguoiNhanTien());
@@ -88,6 +97,8 @@ public class PhieuChiServiceImpl implements PhieuChiService{
 
 	@Override
 	public PhieuChiDTO getPhieuChiDTO(int id) {
+		Locale locale = new Locale("vi","VN");
+		NumberFormat format = NumberFormat.getCurrencyInstance(locale); 
 		PhieuChi phieuChi = phieuChiDao.getPhieuChi(id);
 		
 		PhieuChiDTO phieuChiDTO = new PhieuChiDTO();
@@ -102,6 +113,8 @@ public class PhieuChiServiceImpl implements PhieuChiService{
 		phieuChiDTO.setNguoiLapPhieu(phieuChi.getNguoiLapPhieu());
 		phieuChiDTO.setNguoiNhanTien(phieuChi.getNguoiNhanTien());
 		phieuChiDTO.setSoTien(phieuChi.getSoTien());
+		phieuChiDTO.setTongtien(format.format(phieuChi.getSoTien()));
+		
 		phieuChiDTO.setTrangThai(phieuChi.getTrangThai());
 		
 		return phieuChiDTO;
@@ -114,6 +127,38 @@ public class PhieuChiServiceImpl implements PhieuChiService{
 		if(phieuChi != null){
 			phieuChi.setTrangThai(phieuChiDTO.getTrangThai());
 		}
+	}
+
+	@Override
+	public List<PhieuChiDTO> getAllByTrangThai(int trangThai) {
+		Locale locale = new Locale("vi","VN");
+		NumberFormat format = NumberFormat.getCurrencyInstance(locale); 
+		
+		List<PhieuChiDTO> phieuChiDTOs = new ArrayList<PhieuChiDTO>();
+		List<PhieuChi> phieuChis = phieuChiDao.getAllByTrangThai(trangThai);
+		for(PhieuChi phieuChi : phieuChis){
+			
+			PhieuChiDTO phieuChiDTO = new PhieuChiDTO();
+			
+			phieuChiDTO.setId(phieuChi.getId());
+			phieuChiDTO.setDiaChi(phieuChi.getDiaChi());
+			phieuChiDTO.setKemTheo(phieuChi.getKemTheo());
+			phieuChiDTO.setGiamDoc(phieuChi.getGiamDoc());
+			phieuChiDTO.setLyDoChi(phieuChi.getLyDoChi());
+			phieuChiDTO.setNgayLapPhieu(phieuChi.getNgayLapPhieu());
+			
+			phieuChiDTO.setNguoiLapPhieu(phieuChi.getNguoiLapPhieu());
+			phieuChiDTO.setNguoiNhanTien(phieuChi.getNguoiNhanTien());
+			phieuChiDTO.setSoTien(phieuChi.getSoTien());
+			
+			phieuChiDTO.setTongtien(format.format(phieuChi.getSoTien()));
+			
+			phieuChiDTO.setTrangThai(phieuChi.getTrangThai());
+			
+			phieuChiDTOs.add(phieuChiDTO);
+		}
+		
+		return phieuChiDTOs;
 	}
 	
 	

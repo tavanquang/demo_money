@@ -18,4 +18,6 @@ public interface PhieuChiService {
 
 	public void EditTrangThai(PhieuChiDTO phieuChiDTO);
 	
+	public List<PhieuChiDTO> getAllByTrangThai(int trangThai);
+	
 }

@@ -15,6 +15,16 @@ public class NoiDungDeXuatDTO {
 	private int soNgay;
 
 	private double thanhTien;
+	
+	private String tien;
+
+	public String getTien() {
+		return tien;
+	}
+
+	public void setTien(String tien) {
+		this.tien = tien;
+	}
 
 	private String idPhieuDeXuat;
 
